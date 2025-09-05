@@ -17,17 +17,24 @@ filtered_df = df.copy()
 if game_filter:
     filter_df = filtered_df[filtered_df['Game'].isin(game_filter)]
 if weapon_filter:
-    filtered_df = filtered_df[filtered_df['Weapon'].isin(game_filter)]
+    filtered_df = filtered_df[filtered_df['Weapon'].isin(weapon_filter)]
+
+# Debug
+st.sidebar.write("Selected Games:", game_filter)
+st.sidebar.write("Remaining Rows:", len(filtered_df))
+
+#show results
+st.dataframe(filtered_df)
 
 #Display characters
 for _, row in filtered_df.iterrows():
     st.subheader(row['Name'])
-    st.text(f"Style: {row['Game']}")
-    st.text(f"Health: {row['Style']}")
+    st.text(f"Game: {row['Game']}")
+    st.text(f"Style: {row['Style']}")
+    st.text(f"Health: {row['Health']}")
     st.text(f"Weapon: {row['Weapon']}")
     st.text(f"Abilities: {row['Abilities']}")
     st.text(f"Quote: \"{row['Quote']}\"")
-
 
     #Show image
     img_path = os.path.join("images", str(row['ImageFile']))
