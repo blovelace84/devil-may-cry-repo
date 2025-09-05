@@ -30,7 +30,7 @@ for _, row in filtered_df.iterrows():
 
 
     #Show image
-    img_path = os.path.join("images", row['ImageFile'])
+    img_path = os.path.join("images", str(row['ImageFile']))
     if os.path.exists(img_path):
         image = Image.open(img_path)
         st.image(image, width=200)
