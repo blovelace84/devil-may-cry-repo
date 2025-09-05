@@ -15,9 +15,9 @@ weapon_filter = st.sidebar.multiselect("Filter by Weapon", df['Weapon'].unique()
 #Apply filter
 filtered_df = df.copy()
 if game_filter:
-    filter_df = filtered_df[filtered_df['Game'].is_in(game_filter)]
+    filter_df = filtered_df[filtered_df['Game'].isin(game_filter)]
 if weapon_filter:
-    filtered_df = filtered_df[filtered_df['Weapon'].is_in(game_filter)]
+    filtered_df = filtered_df[filtered_df['Weapon'].isin(game_filter)]
 
 #Display characters
 for _, row in filtered_df.iterrows():
